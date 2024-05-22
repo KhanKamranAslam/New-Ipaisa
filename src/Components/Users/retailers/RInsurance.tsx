@@ -1,13 +1,12 @@
 import { Button, TextField } from "@mui/material";
-import BBPSLogo1  from '../../../../BBPSLogo/BBPSLogo1.png'
+import BBPSLogo1 from "../../../../BBPSLogo/BBPSLogo1.png";
 import React from "react";
+import Image from "next/image";
 
 export default function RInsurance() {
-    
   const imageData = BBPSLogo1.src;
 
   return (
-    
     <section className="">
       <form className="main-container">
         <p className="text-3xl font-bold text-white ">Retailer Services</p>
@@ -28,11 +27,14 @@ export default function RInsurance() {
             </p>
 
             <div className="flex flex-col mt-4">
-              
-            <div style={{display:'flex', justifyContent:'space-between'}}>
-                    <p className="text-[#0B12B7] font-medium text-md">Operater</p>
-                    <img style={{height:30, width:50}} src={imageData} alt=""/>
-            </div>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <p className="text-[#0B12B7] font-medium text-md">Operater</p>
+                <Image
+                  style={{ height: 30, width: 50 }}
+                  src={imageData}
+                  alt=""
+                />
+              </div>
               <select
                 name=""
                 id=""
@@ -62,23 +64,27 @@ export default function RInsurance() {
               />
             </div>
 
-        <div className="flex flex-col mt-4">
-          <p className="text-[#0B12B7] font-medium text-md">Date Of Birth</p>
-        <span className="w-full flex items-center  gap-2 mt-4">
-            <TextField
-              type="date"
-              className="w-64 bg-white rounded-md"
-              inputProps={{
-                style: {
-                  height: "5px",
-                },
-              }}
-            />
-        </span>
-        </div>
+            <div className="flex flex-col mt-4">
+              <p className="text-[#0B12B7] font-medium text-md">
+                Date Of Birth
+              </p>
+              <span className="w-full flex items-center  gap-2 mt-4">
+                <TextField
+                  type="date"
+                  className="w-64 bg-white rounded-md"
+                  inputProps={{
+                    style: {
+                      height: "5px",
+                    },
+                  }}
+                />
+              </span>
+            </div>
 
-        <div className="flex flex-col mt-4">
-              <p className="text-[#0B12B7] font-medium text-md">Mobile Number</p>
+            <div className="flex flex-col mt-4">
+              <p className="text-[#0B12B7] font-medium text-md">
+                Mobile Number
+              </p>
               <TextField
                 type="number"
                 placeholder="Mobile Number"

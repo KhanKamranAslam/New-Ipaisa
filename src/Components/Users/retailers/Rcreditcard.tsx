@@ -101,8 +101,9 @@
 import { TextField, Button } from "@mui/material";
 import Swal from "sweetalert2";
 import axios from "axios";
-import BBPSLogo1  from '../../../../BBPSLogo/BBPSLogo1.png'
+import BBPSLogo1 from "../../../../BBPSLogo/BBPSLogo1.png";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Rcreditcard() {
   const [creditCardNumber, setCreditCardNumber] = useState("");
@@ -192,29 +193,28 @@ export default function Rcreditcard() {
 
   return (
     <form className="main-container">
-       <span className="w-full md:w-1/2 lg:w-1/2 xl:w-1/2 px-10 py-10  mb-2 border-start-start-radius: 9999px;">
-            <p className="font-bold text-5xl text-[#0B12B7]">
-              Streamlined Credit Card Payments
-            </p>
+      <span className="w-full md:w-1/2 lg:w-1/2 xl:w-1/2 px-10 py-10  mb-2 border-start-start-radius: 9999px;">
+        <p className="font-bold text-5xl text-[#0B12B7]">
+          Streamlined Credit Card Payments
+        </p>
 
-            <p className="mt-8 text-2xl ">
-            Effortlessly manage your finances by settling credit card bills with ease, ensuring financial peace of mind.
-            </p>
-          </span>
+        <p className="mt-8 text-2xl ">
+          Effortlessly manage your finances by settling credit card bills with
+          ease, ensuring financial peace of mind.
+        </p>
+      </span>
       <p className="text-3xl font-bold text-white ">Retailer Services</p>
       <div className="flex mt-4">
         {/* Credit Card Payment Section */}
         <span className="w-full md:w-1/2 lg:w-1/2 xl:w-1/2 px-10 py-10 shadow-2xl mb-2 bg-white ml-4 ">
-        
           <p className="text-[#0000FF] text-2xl font-bold">
             Credit Card Payment
           </p>
-         
-          <div className="mt-4 w-full">
 
-          <div style={{display:'flex', justifyContent:'space-between'}}>
-            <p className="text-[#0000FF] ">Credit Card Number</p>
-            <img style={{height:30, width:50}} src={imageData} alt=""/>
+          <div className="mt-4 w-full">
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <p className="text-[#0000FF] ">Credit Card Number</p>
+              <Image style={{ height: 30, width: 50 }} src={imageData} alt="" />
             </div>
             <TextField
               type="number"

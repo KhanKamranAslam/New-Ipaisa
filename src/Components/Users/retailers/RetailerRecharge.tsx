@@ -1,44 +1,46 @@
 import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
-import BBPSLogo1  from '../../../../BBPSLogo/BBPSLogo1.png'
+import BBPSLogo1 from "../../../../BBPSLogo/BBPSLogo1.png";
 import { useFormik } from "formik";
-import * as Yup from 'yup';
+import * as Yup from "yup";
+import Image from "next/image";
 
 export default function RetailerRecharge() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      mobileNumber: '',
-      operator: '',
-      circle: '',
-      amount: '',
+      mobileNumber: "",
+      operator: "",
+      circle: "",
+      amount: "",
     },
     validationSchema: Yup.object({
       mobileNumber: Yup.string()
-        .matches(/^[0-9]{10}$/, 'Please enter a valid 10-digit mobile number')
+        .matches(/^[0-9]{10}$/, "Please enter a valid 10-digit mobile number")
         .test(
-          'not-all-zeros',
-          'Mobile number cannot be all zeros',
-          value => value !== '0000000000'
+          "not-all-zeros",
+          "Mobile number cannot be all zeros",
+          (value) => value !== "0000000000"
         )
         .test(
-          'not-eight-consecutive-zeros',
-          'Mobile number cannot contain eight consecutive zeros',
-          value => value !== undefined && !/00000000/.test(value)
+          "not-eight-consecutive-zeros",
+          "Mobile number cannot contain eight consecutive zeros",
+          (value) => value !== undefined && !/00000000/.test(value)
         )
-        .required('Mobile number is required'),
-      operator: Yup.string()
-        .required('Operator is required'),
-      circle: Yup.string()
-        .required('Circle is required'),
+        .required("Mobile number is required"),
+      operator: Yup.string().required("Operator is required"),
+      circle: Yup.string().required("Circle is required"),
       amount: Yup.string()
-        .matches(/^[1-9][0-9]*$/, 'Amount must be a positive number without leading zeros')
-        .required('Amount is required'),
+        .matches(
+          /^[1-9][0-9]*$/,
+          "Amount must be a positive number without leading zeros"
+        )
+        .required("Amount is required"),
     }),
-    onSubmit: values => {
+    onSubmit: (values) => {
       // Perform form submission logic here
-      console.log('Form submitted with values:', values);
+      console.log("Form submitted with values:", values);
       setSubmitSuccess(true);
     },
   });
@@ -71,11 +73,15 @@ export default function RetailerRecharge() {
           <span className="w-full md:w-1/2 lg:w-1/2 xl:w-1/2 px-10 py-10 shadow-2xl mb-2 bg-[#ddf1f5] ml-2 rounded-md">
             <p className="text-[#0B12B7] text-3xl font-bold">Mobile Recharge</p>
             <div className="flex flex-col mt-4">
-            <div style={{display:'flex', justifyContent:'space-between'}}>
-              <p className="text-[#0B12B7] font-medium text-md">
-                Mobile Number
-              </p>
-              <img style={{height:30, width:50}} src={imageData} alt=""/>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <p className="text-[#0B12B7] font-medium text-md">
+                  Mobile Number
+                </p>
+                <Image
+                  style={{ height: 30, width: 50 }}
+                  src={imageData}
+                  alt=""
+                />
               </div>
 
               <TextField
@@ -86,8 +92,13 @@ export default function RetailerRecharge() {
                 value={formik.values.mobileNumber}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                error={formik.touched.mobileNumber && Boolean(formik.errors.mobileNumber)}
-                helperText={formik.touched.mobileNumber && formik.errors.mobileNumber}
+                error={
+                  formik.touched.mobileNumber &&
+                  Boolean(formik.errors.mobileNumber)
+                }
+                helperText={
+                  formik.touched.mobileNumber && formik.errors.mobileNumber
+                }
                 inputProps={{
                   maxLength: 10,
                   pattern: "[0-9]*",
@@ -109,7 +120,10 @@ export default function RetailerRecharge() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 style={{
-                  borderColor: formik.touched.operator && formik.errors.operator ? 'red' : '',
+                  borderColor:
+                    formik.touched.operator && formik.errors.operator
+                      ? "red"
+                      : "",
                 }}
               >
                 <option value="">Select Operator</option>
@@ -118,10 +132,14 @@ export default function RetailerRecharge() {
                 <option value="Jio">Jio</option>
                 <option value="MTNL">MTNL</option>
                 <option value="Vi">Vi</option>
-                <option value="Tata Docomo CDMA Postpaid">Tata Docomo CDMA Postpaid</option>
+                <option value="Tata Docomo CDMA Postpaid">
+                  Tata Docomo CDMA Postpaid
+                </option>
               </select>
               {formik.touched.operator && formik.errors.operator && (
-                <div style={{ color: 'red', marginTop: '4px' }}>{formik.errors.operator}</div>
+                <div style={{ color: "red", marginTop: "4px" }}>
+                  {formik.errors.operator}
+                </div>
               )}
             </div>
 
@@ -134,7 +152,8 @@ export default function RetailerRecharge() {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 style={{
-                  borderColor: formik.touched.circle && formik.errors.circle ? 'red' : '',
+                  borderColor:
+                    formik.touched.circle && formik.errors.circle ? "red" : "",
                 }}
               >
                 <option value="">Select</option>
@@ -144,7 +163,9 @@ export default function RetailerRecharge() {
                 <option value="Rajasthan">Rajasthan</option>
               </select>
               {formik.touched.circle && formik.errors.circle && (
-                <div style={{ color: 'red', marginTop: '4px' }}>{formik.errors.circle}</div>
+                <div style={{ color: "red", marginTop: "4px" }}>
+                  {formik.errors.circle}
+                </div>
               )}
             </div>
 
@@ -170,13 +191,18 @@ export default function RetailerRecharge() {
                 onKeyPress={handleKeyPress}
               />
             </div>
-            
+
             <div className="flex flex-col mt-6">
-              <Button type="submit" className="w-3/4 bg-themeColor text-white px-4 py-3 rounded-md hover:bg-green-500 hover:text-white">
+              <Button
+                type="submit"
+                className="w-3/4 bg-themeColor text-white px-4 py-3 rounded-md hover:bg-green-500 hover:text-white"
+              >
                 Confirm
               </Button>
               {submitSuccess && (
-                <p className="text-green-500 mt-4">Recharge successfully submitted!</p>
+                <p className="text-green-500 mt-4">
+                  Recharge successfully submitted!
+                </p>
               )}
             </div>
           </span>
