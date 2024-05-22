@@ -154,4 +154,3 @@ const Mainfooter: React.FC = () => {
     </section>
   );
 };
-export default Mainfooter;
